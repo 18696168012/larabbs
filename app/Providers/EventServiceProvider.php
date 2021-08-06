@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +23,10 @@ class EventServiceProvider extends ServiceProvider
         Verified::class=>[
             \App\Listeners\EmailVerified::class,
         ],
+        //注释掉，改为trait重写了
+        /*PasswordReset::class=>[
+            \App\Listeners\PasswordReset::class,
+        ],*/
     ];
 
     /**
