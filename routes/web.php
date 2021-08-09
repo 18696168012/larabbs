@@ -19,3 +19,4 @@ Auth::routes();
 
 Auth::routes(['verify' => true]);
 
+Route::resource('users','UsersController',['only'=>['show','edit','update']]);
