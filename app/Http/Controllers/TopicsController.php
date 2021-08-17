@@ -32,8 +32,12 @@ class TopicsController extends Controller
         $topic->save();
         return redirect()->route('topics.show',$topic->id)->with('success','帖子创建成功');
     }
-    public function show(Topic $topic)
+    public function show(Topic $topic,Request $request)
     {
+        // URL 矫正
+        if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
+            return redirect($topic->link(), 301);
+        }
         return view('topics.show',compact('topic'));
     }
     public function uploadImage(Request $request, ImageUploadHandler $uploader)
