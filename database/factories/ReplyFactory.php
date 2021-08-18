@@ -27,4 +27,8 @@ class ReplyFactory extends Factory
             'user_id' => rand(1, 10),
         ];
     }
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('id','desc');
+    }
 }
