@@ -11,9 +11,7 @@ use Auth;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use HasFactory,MustVerifyEmailTrait;
-    use Notifiable {
-        notify as protected laravelNotify;
-    }
+    use Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -57,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     {
         return $this->hasMany(Reply::class);
     }
-    public function notify($instance)
+    public function topicReplyNotify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
         if ($this->id == Auth::id()) {
@@ -69,6 +67,6 @@ class User extends Authenticatable implements MustVerifyEmailContract
             $this->increment('notification_count');
         }
 
-        $this->laravelNotify($instance);
+        $this->notify($instance);
     }
 }

@@ -17,7 +17,7 @@ class ReplyObserver
     {
         $reply->topic->reply_count = $reply->topic->replies->count();
         $reply->topic->save();
-        $reply->topic->user->notify(new TopicReplied($reply));
+        $reply->topic->user->topicReplyNotify(new TopicReplied($reply));
     }
 
     /**
