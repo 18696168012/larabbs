@@ -31,7 +31,7 @@ class TopicObserver
      */
     public function created(Topic $topic)
     {
-        //
+        \DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 
     /**
