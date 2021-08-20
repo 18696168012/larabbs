@@ -50,6 +50,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
     ];
     public function getAvatarAttribute($value)
     {
+        if(!$value){
+            $value="/uploads/images/avatars/202108/12/1_1628753237_xYkZMImW35.png";
+        }
         return config('app.url').$value;
     }
     public function topics()
