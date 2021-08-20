@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
     {
         User::factory()->count(10)->create();
         $user=User::find(1);
-        $user->name = "张宏扬1";
+        $user->name = "Gator";
         $user->email = '791264638@qq.com';
         $user->avatar = '/uploads/images/avatars/202108/12/1_1628753237_xYkZMImW35.png';
         $user->save();
@@ -25,6 +25,9 @@ class UsersTableSeeder extends Seeder
 
         // 将 2 号用户指派为『管理员』
         $user = User::find(2);
+        $user->name = "张宏扬";
+        $user->email = '1403899088@qq.com';
+        $user->save();
         $user->assignRole('Maintainer');
     }
 }
